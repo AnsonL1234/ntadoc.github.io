@@ -1,0 +1,39 @@
+name: Nta Doc Website CI
+
+# only triggers when code inside vectra server has changes
+on: 
+  push:  
+  pull_request: 
+
+jobs: 
+  build: 
+    runs-on: ubuntu-latest
+
+    defaults: 
+      run: 
+        working-directory: . # All commands run inside this folder
+
+    steps: 
+      # Step 1 - Download the code 
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2 - Install Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with: 
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      # Step 3 - Install dependencies
+      - name: Install dependencies
+        run: npm ci # To install dependencies exactly as defined in the 'package-lock.json'
+
+      # Step 4 - Run tests
+      - name: Run tests
+        run: npm test
+
+      # Step 5 - Build the project 
+      - name: Build
+        run: npm run build
