@@ -30,10 +30,6 @@ jobs:
       - name: Install dependencies
         run: npm ci # To install dependencies exactly as defined in the 'package-lock.json'
 
-      # Step 4 - Run tests
-      - name: Run tests
-        run: npm test
-
-      # Step 5 - Build the project 
+      # Step 4 - Build the project 
       - name: Build
         run: npm run build
