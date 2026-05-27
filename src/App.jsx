@@ -5,6 +5,7 @@ import heroImg from './assets/hero.png'
 import Main from './pages/Main/Main.pages.jsx'
 import './styles/App.css'
 
+
 function App() {
 
   return (
